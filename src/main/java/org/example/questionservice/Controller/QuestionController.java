@@ -1,6 +1,7 @@
 package org.example.questionservice.Controller;
 
 import org.example.questionservice.Model.Question;
+import org.example.questionservice.Model.QuestionWrapper;
 import org.example.questionservice.Service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +42,14 @@ public class QuestionController {
         return service.getQuestionsForQuiz(category, numQ);
 
     }
+
+
+    @GetMapping("getQuestions")
+    public ResponseEntity<List<QuestionWrapper>> getQuestionsFromId(@RequestBody List<Integer> questionIds){
+
+        return service.getQuestionsFromId(questionIds);
+    }
+
 
 
 
