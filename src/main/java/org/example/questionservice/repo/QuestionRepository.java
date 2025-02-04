@@ -14,7 +14,7 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
     List<Question> findByCategory(String category);
 
     //?1 → Positional parameter that binds to the first integer parameter (numQ)
-    @Query("SELECT q FROM Question q WHERE q.category = ?1 ORDER BY RANDOM() LIMIT ?2")
-    List<Question> findRandomQuestionsByCategory(String category, int numQ);
+    @Query("SELECT q.id FROM Question q WHERE q.category = ?1 ORDER BY RANDOM() LIMIT ?2")
+    List<Integer> findRandomQuestionsByCategory(String category, int numQ);
 
 }

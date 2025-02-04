@@ -36,4 +36,13 @@ public class QuestionController {
     //getQuestions(questionId)
     //getScore
 
+    @GetMapping("/generate")
+    public ResponseEntity<List<Integer>> getQuestionsForQuiz(@RequestParam String category, @RequestParam int numQ){
+        return service.getQuestionsForQuiz(category, numQ);
+
+    }
+
+
+
+
 }

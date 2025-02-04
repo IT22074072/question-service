@@ -44,4 +44,10 @@ public class QuestionService {
         }
 
     }
+
+    public ResponseEntity<List<Integer>> getQuestionsForQuiz(String category, int numQ) {
+        List<Integer> questions = repo.findRandomQuestionsByCategory(category, numQ);
+        return new ResponseEntity<>(questions, HttpStatus.OK);
+
+    }
 }
