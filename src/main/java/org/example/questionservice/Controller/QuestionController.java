@@ -45,14 +45,14 @@ public class QuestionController {
     }
 
 
-    @GetMapping("getQuestions")
+    @PostMapping("getQuestions")
     public ResponseEntity<List<QuestionWrapper>> getQuestionsFromId(@RequestBody List<Integer> questionIds){
 
         return service.getQuestionsFromId(questionIds);
     }
 
-    @GetMapping("getScore")
-    public ResponseEntity<Integer> getScore(List<Response> responses){
+    @PostMapping("getScore")
+    public ResponseEntity<Integer> getScore(@RequestBody List<Response> responses){
         return service.getScore(responses);
     }
 
