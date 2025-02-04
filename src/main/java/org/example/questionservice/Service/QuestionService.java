@@ -2,6 +2,7 @@ package org.example.questionservice.Service;
 
 import org.example.questionservice.Model.Question;
 import org.example.questionservice.Model.QuestionWrapper;
+import org.example.questionservice.Model.Response;
 import org.example.questionservice.repo.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -68,5 +69,19 @@ public class QuestionService {
 
         }
         return  new ResponseEntity<>(wrappers, HttpStatus.OK);
+    }
+
+    public ResponseEntity<Integer> getScore(List<Response> responses) {
+        int right = 0;
+
+        for(Response response: responses){
+            Question question = repo.findById(response.getId()).get();
+            if(response.getResponse().equals(question.getRightAnswer())){
+                right++;
+            }
+        }
+
+        return new ResponseEntity<>(right,HttpStatus.OK);
+
     }
 }

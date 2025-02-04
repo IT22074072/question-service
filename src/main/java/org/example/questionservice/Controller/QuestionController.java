@@ -2,6 +2,7 @@ package org.example.questionservice.Controller;
 
 import org.example.questionservice.Model.Question;
 import org.example.questionservice.Model.QuestionWrapper;
+import org.example.questionservice.Model.Response;
 import org.example.questionservice.Service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -49,6 +50,12 @@ public class QuestionController {
 
         return service.getQuestionsFromId(questionIds);
     }
+
+    @GetMapping("getScore")
+    public ResponseEntity<Integer> getScore(List<Response> responses){
+        return service.getScore(responses);
+    }
+
 
 
 
